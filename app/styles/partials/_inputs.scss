@@ -1,0 +1,6 @@
+input.form-control {
+  border-radius: $base-border-radius;
+  &:focus {
+    box-shadow: inset 0 0 3px rgba(102, 175, 233, 0.6) !important;
+  }
+}

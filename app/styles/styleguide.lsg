@@ -1,0 +1,10 @@
+source: 'app.scss'
+title: 'Roundcube Style Guide'
+javascript-before:
+  - 'vendor.js'
+
+header: <h1 class="livingstyleguide--page-title">Roundcube Style Guide</h1>
+footer:
+
+style:
+  base-font: 'Arial, sans-serif'
