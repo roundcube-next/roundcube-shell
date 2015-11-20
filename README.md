@@ -14,7 +14,7 @@ You need to have a JMAP server running somewhere. Currently, the most mature ser
 * [Bower](http://bower.io/)
 * [Ember CLI](http://www.ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/) (only for future tests)
-* Ruby (for generating the UI styleguide)
+* Ruby with [Bundler](http://bundler.io) (for generating the UI styleguide)
 
 ## Setup
 
