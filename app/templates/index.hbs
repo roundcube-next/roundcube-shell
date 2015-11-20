@@ -1,1 +1,16 @@
+<nav class='navbar navbar-default'>
+  <div class="container-fluid">
+    <!-- Branding and logo -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Roundcube" src="/assets/logo.png"/>
+      </a>
+    </div>
+    <!-- Account menu -->
+    <ul class="nav navbar-nav navbar-right">
+      {{account-menu account=model tagName='li'}}
+    </ul>
+  </div>
+</nav>
+
 {{outlet}}
