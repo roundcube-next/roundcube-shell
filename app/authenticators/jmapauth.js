@@ -10,7 +10,7 @@ import Base from 'ember-simple-auth/authenticators/base';
  */
 function tryAuth (jmap, username, continuationCallback) {
   return new Ember.RSVP.Promise(function (resolve, reject) {
-    jmap.setupWithAuthenticationUrl(RoundcubeShell.jmapHost + '/auth');
+    jmap.setupWithAuthenticationUrl(RoundcubeShell.jmapHost + '/.well-known/jmap');
     jmap.client.authenticate(username, 'RoundcubeShell', continuationCallback).then(function(authAccess) {
     jmap.setupWithAuthAccess(authAccess);
     jmap.client.getAccounts()
