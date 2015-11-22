@@ -1,10 +1,28 @@
-<div class="login-form">
-  <h3>Sign in to Roundcube</h3>
-  <form class='form-inline'>
-    {{input name='uuid' value=uuid class='form-control'
-      placeholder='JMAP Proxy UUID'}}
-    <button {{action 'submit'}} type='submit' class='btn btn-primary'>
-      Sign in
-    </button>
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+  <h3 class="text-center">Sign in to Roundcube</h3>
+  <form class="login-form">
+    <div class="form-group">
+    {{input name='username' value=username class='form-control'
+      placeholder='Username' disabled=authcontinue autofocus='autofocus'}}
+    </div>
+    {{#if authcontinue}}
+    <div class="form-group">
+      {{#if isPasswordAuth}}
+        {{focus-input type='password' name='password' value=password class='form-control'
+          placeholder='Password'}}
+      {{/if}}
+      <span class="prompt help-block">{{{prompt}}}</span>
+      </div>
+    {{/if}}
+    <div class="form-group">
+      <button {{action 'submit'}} type='submit' class='btn btn-primary btn-block'>
+        {{if authcontinue "Sign in" "Next"}}
+      </button>
+    {{#if authcontinue}}
+      <button {{action 'cancel'}} type='button' class='btn btn-default btn-block'>
+        Cancel
+      </button>
+    {{/if}}
+    </div>
   </form>
 </div>
