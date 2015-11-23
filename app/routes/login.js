@@ -17,7 +17,7 @@ export default Ember.Route.extend({
 
       this.get('session').authenticate('authenticator:uuid', uuid).then(
         function () {
-          self.transitionTo('index');
+          self.transitionTo('shell');
           pubsub.trigger('shell.authenticated');
         },
         function (message) {
