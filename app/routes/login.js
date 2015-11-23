@@ -49,7 +49,7 @@ export default Ember.Route.extend({
       else {
         this.get('session').authenticate('authenticator:jmapauth', username, authContinue.bind(self)).then(
           function () {
-            self.transitionTo('index');
+            self.transitionTo('shell');
             pubsub.trigger('shell.authenticated');
           },
           function (message) {
