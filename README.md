@@ -37,7 +37,7 @@ Third, bring in all dependencies and set up the project:
 
 The JMAP proxy happens to only support a very basic sort of authentication at this moment. You can link your IMAP account with the proxy server, and it should provide a secret UUID that identifies you.
 
-* `export JMAP_HOST=http://ip:port && ember server`
+* `export JMAP_HOST=http://ip:port && STYLEGUIDE=true && ember server`
 * Open Roundcube at `http://localhost:4200`
 * See the pretty styleguide at `http://localhost:4200/assets/styleguide.html`
 
