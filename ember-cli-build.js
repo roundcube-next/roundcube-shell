@@ -3,8 +3,14 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var mergeTrees = require('broccoli-merge-trees');
-var LivingStyleGuide = require('broccoli-livingstyleguide');
-var lsg = LivingStyleGuide(['app'], 'styles/styleguide.lsg', 'assets/styleguide.html');
+var lsg;
+
+try {
+  var LivingStyleGuide = require('broccoli-livingstyleguide');
+  lsg = LivingStyleGuide(['app'], 'styles/styleguide.lsg', 'assets/styleguide.html');
+} catch(e) {
+  console.log('Could not find broccoli-livingstyleguide. The styleguide will not be generated.');
+}
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -34,5 +40,9 @@ module.exports = function(defaults) {
   app.import('bower_components/jmap-client/dist/jmap-client.js');
   app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
 
-  return mergeTrees([app.toTree(), lsg]);
+  var trees = [app.toTree()];
+  if (lsg) {
+    trees.push(lsg);
+  }
+  return mergeTrees(trees);
 };
