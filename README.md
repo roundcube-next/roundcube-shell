@@ -18,16 +18,7 @@ You need to have a JMAP server running somewhere. Currently, the most mature ser
 
 ## Setup
 
-First, clone all the Roundcube apps you'll be using and run `npm link` inside each of their directories:
-
-* `git clone https://github.com/roundcube-next/roundcube-notifications` etc
-* `cd roundcube-notifications && npm link` etc
-
-Next, change into the `roundcube-shell` directory and run `npm link <app-name>` for each Roundcube app you'll be using:
-
-* `npm link roundcube-notifications` etc
-
-Third, bring in all dependencies and set up the project:
+Bring in all dependencies and set up the project:
 
 * `bundle`
 * `npm install`
