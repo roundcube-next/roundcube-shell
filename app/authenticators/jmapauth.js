@@ -15,7 +15,7 @@ function tryAuth (jmap, username, continuationCallback) {
     jmap.setupWithAuthAccess(authAccess);
     jmap.client.getAccounts()
       .then(function (accounts) {
-        var identity = accounts[0];
+        let identity = Object.assign(accounts[0]);
         identity.authAccess = authAccess;
         resolve(identity);
       }, reject);
