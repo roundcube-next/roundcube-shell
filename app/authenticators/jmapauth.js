@@ -29,6 +29,7 @@ export default Base.extend({
   jmap: Ember.inject.service('jmap'),
 
   restore (cachedAccount) {
+    var jmap = this.get('jmap');
     return new Ember.RSVP.Promise(function (resolve, reject) {
       jmap.setupWithAuthAccess(cachedAccount.authAccess);
       resolve(cachedAccount);
