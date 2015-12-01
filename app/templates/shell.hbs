@@ -2,10 +2,11 @@
   <div class="container-fluid">
     <!-- Branding and logo -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img alt="Roundcube" src="/assets/logo.png"/>
       </a>
     </div>
+    {{app-list class="nav navbar-nav" tagname="ul"}}
     <!-- Account menu -->
     <ul class="nav navbar-nav navbar-right">
       {{account-menu account=model tagName='li'}}

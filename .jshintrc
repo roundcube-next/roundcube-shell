@@ -4,7 +4,8 @@
     "document",
     "window",
     "-Promise",
-    "RoundcubeShell"
+    "RoundcubeShell",
+    "_"
   ],
   "browser": true,
   "boss": true,
