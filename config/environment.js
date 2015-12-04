@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var jmapHost = process.env.JMAP_HOST;
+  var jmapHostName = jmapHost.replace(/([^:\/])\/.*$/, '$1');
 
   var ENV = {
     modulePrefix: 'roundcube-shell',
@@ -20,10 +21,10 @@ module.exports = function(environment) {
       jmapHost: jmapHost
     },
     contentSecurityPolicy: {
-      'connect-src': '"self" ' + jmapHost
+      'connect-src': '"self" ' + jmapHostName
     },
     'simple-auth': {
-      crossOriginWhitelist: [jmapHost],
+      crossOriginWhitelist: [jmapHostName],
       store: 'simple-auth-session-store:local-storage',
       authenticationRoute: 'login'
     },
