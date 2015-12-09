@@ -7,9 +7,9 @@ Running Roundcube means running the Shell with some applications enabled.
 
 ## Prerequisites
 
-You need to have a JMAP server running somewhere. Currently, the most mature server is the perl JMAP proxy, and the shell is developed against that.
+You need to have a JMAP server running somewhere. Currently, the Roundcube Server in conjunction with the perl JMAP proxy provides the most complete set of JMAP capabilities and the shell is developed against that.
 
-* [JMAP Proxy](http://github.com/jmapio/jmap-perl)
+* [Roundcube Server](https://github.com/roundcube-next/roundcube-server) connected to [JMAP Proxy](http://github.com/jmapio/jmap-perl)
 * [Node.js](http://nodejs.org/) (with NPM)
 * [Bower](http://bower.io/)
 * [Ember CLI](http://www.ember-cli.com/)
