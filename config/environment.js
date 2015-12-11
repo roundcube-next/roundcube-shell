@@ -21,7 +21,8 @@ module.exports = function(environment) {
       jmapHost: jmapHost
     },
     contentSecurityPolicy: {
-      'connect-src': '"self" ' + jmapHostName
+      'connect-src': "'self' " + jmapHostName,
+      'style-src': "'self' 'unsafe-inline'"
     },
     'simple-auth': {
       crossOriginWhitelist: [jmapHostName],
