@@ -4,6 +4,7 @@ export default {
       username: 'Benutzername',
       password: 'Passwort',
       signin: 'Anmelden',
+      logout: 'Abmelden',
       heading: 'Anmelden um Roundcube'
     },
     action: {
