@@ -47,6 +47,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-feature-flags": "2.0.0",
+    "ember-i18n": "4.2.0",
     "ember-metrics": "0.5.1",
     "ember-moment": "4.1.0",
     "ember-responsive": "1.2.3",
@@ -56,7 +57,7 @@
     "ember-suave": "1.2.2",
     "ember-truth-helpers": "1.2.0",
     "ember-try": "0.0.8",
-    "roundcube-notifications": "https://github.com/roundcube-next/roundcube-notifications.git",
-    "roundcube-mail": "https://github.com/roundcube-next/roundcube-mail.git"
+    "roundcube-mail": "https://github.com/roundcube-next/roundcube-mail.git",
+    "roundcube-notifications": "https://github.com/roundcube-next/roundcube-notifications.git"
   }
 }

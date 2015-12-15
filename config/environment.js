@@ -20,6 +20,9 @@ module.exports = function(environment) {
       // when it is created
       jmapHost: jmapHost
     },
+    i18n: {
+      defaultLocale: 'en-us'
+    },
     contentSecurityPolicy: {
       'connect-src': "'self' " + jmapHostName,
       'style-src': "'self' 'unsafe-inline'",
