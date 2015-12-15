@@ -4,7 +4,10 @@ export default {
       username: 'Username',
       password: 'Password',
       signin: 'Sign in',
-      heading: 'Sign in to Roundcube'
+      heading: 'Sign in to Roundcube',
+      error: {
+        unsupportedMethod: 'The server requires an authentication method not supported by this client'
+      }
     },
     action: {
       next: 'Next',

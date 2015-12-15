@@ -7,17 +7,18 @@ function authContinue(authContinuation) {
   var method;
   authContinuation.methods.forEach((m) => {
     // check for supported methods
-    if (!method && (m == 'password' || m == 'external')) {
+    if (!method && (m === 'password' || m === 'external')) {
       method = m;
     }
   });
 
-  if (!method)
-    throw new Error('Server requires an authentication method not supported by this client');
+  if (!method) {
+    throw new Error(this.i18n.t('shell.auth.error.unsupportedMethod'));
+  }
 
   var controller = this.get('controller');
   controller.set('authcontinue', true);
-  controller.set('isPasswordAuth', method == 'password')
+  controller.set('isPasswordAuth', method === 'password');
   controller.set('method', method);
   controller.set('prompt', authContinuation.prompt || '');
 

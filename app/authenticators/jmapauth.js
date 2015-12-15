@@ -12,16 +12,14 @@ function tryAuth (jmap, username, continuationCallback) {
   return new Ember.RSVP.Promise(function (resolve, reject) {
     jmap.setupWithAuthenticationUrl(RoundcubeShell.jmapHost + '/.well-known/jmap');
     jmap.client.authenticate(username, 'RoundcubeShell', continuationCallback).then(function(authAccess) {
-    jmap.setupWithAuthAccess(authAccess);
-    jmap.client.getAccounts()
-      .then(function (accounts) {
-        let identity = Object.assign(accounts[0]);
-        identity.authAccess = authAccess;
-        resolve(identity);
-      }, reject);
-    }, function(err) {
-      reject(new Error("Authentication failed"))
-    });
+      jmap.setupWithAuthAccess(authAccess);
+      jmap.client.getAccounts()
+        .then(function (accounts) {
+          let identity = Object.assign(accounts[0]);
+          identity.authAccess = authAccess;
+          resolve(identity);
+        }, reject);
+    }, reject);
   });
 }
 
