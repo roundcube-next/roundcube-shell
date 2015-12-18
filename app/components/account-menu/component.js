@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   session: Ember.inject.service(),
 
   actions: {
-    logout () {
+    logout() {
       this.get('session').invalidate();
     }
   }

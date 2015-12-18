@@ -4,11 +4,11 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   jmap: Ember.inject.service(),
   model() {
-    var request = this.get('jmap').client.getAccounts();
+    let request = this.get('jmap').client.getAccounts();
 
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Ember.RSVP.Promise(function(resolve, reject) {
       request.then(
-      function (accounts) {
+      function(accounts) {
         resolve(accounts[0]);
       }, reject);
     });

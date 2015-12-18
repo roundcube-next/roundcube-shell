@@ -1,3 +1,8 @@
 {
-  "preset": "ember-suave"
+  "preset": "ember-suave",
+  "disallowMultipleVarDecl": false,
+  "requireCommentsToIncludeAccess": false,
+  "requireTemplateStringsForConcatenation": false,
+  "requireObjectDestructuring": false,
+  "disallowSpaceAfterObjectKeys": { "allExcept": [ "aligned" ] }
 }

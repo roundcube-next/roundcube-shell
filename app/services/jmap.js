@@ -18,7 +18,7 @@ export default Ember.Service.extend({
    * @method setupWithAuthenticationUrl
    * @param {String} apiUrl
    */
-  setup (apiUrl) {
+  setup(apiUrl) {
     this.client = this.client.withAPIUrl(apiUrl);
   },
 

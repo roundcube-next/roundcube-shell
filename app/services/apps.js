@@ -8,14 +8,12 @@ export default Ember.Service.extend({
   apps: [],
   register(name, route, component) {
     this.apps.push({
-      name: name,
-      route: route,
-      component: component
+      name,
+      route,
+      component
     });
   },
   getRoutedApps() {
-    return _.filter(this.apps, function (app) {
-      return app.route;
-    });
+    return _.filter(this.apps, (app) => app.route);
   }
 });

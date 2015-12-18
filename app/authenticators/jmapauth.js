@@ -8,13 +8,13 @@ import Base from 'ember-simple-auth/authenticators/base';
  * @param {String} username
  * @param {String} password
  */
-function tryAuth (jmap, username, continuationCallback) {
-  return new Ember.RSVP.Promise(function (resolve, reject) {
+function tryAuth(jmap, username, continuationCallback) {
+  return new Ember.RSVP.Promise(function(resolve, reject) {
     jmap.setupWithAuthenticationUrl(RoundcubeShell.jmapHost + '/.well-known/jmap');
     jmap.client.authenticate(username, 'RoundcubeShell', continuationCallback).then(function(authAccess) {
       jmap.setupWithAuthAccess(authAccess);
       jmap.client.getAccounts()
-        .then(function (accounts) {
+        .then(function(accounts) {
           let identity = Object.assign(accounts[0]);
           identity.authAccess = authAccess;
           resolve(identity);
@@ -26,14 +26,14 @@ function tryAuth (jmap, username, continuationCallback) {
 export default Base.extend({
   jmap: Ember.inject.service('jmap'),
 
-  restore (cachedAccount) {
-    var jmap = this.get('jmap');
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+  restore(cachedAccount) {
+    let jmap = this.get('jmap');
+    return new Ember.RSVP.Promise(function(resolve) {
       jmap.setupWithAuthAccess(cachedAccount.authAccess);
       resolve(cachedAccount);
     });
   },
-  authenticate (username, continuationCallback) {
+  authenticate(username, continuationCallback) {
     return tryAuth(this.get('jmap'), username, continuationCallback);
   }
   // TODO: Add an invalidate() method when proper server auth is ready

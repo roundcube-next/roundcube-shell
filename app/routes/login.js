@@ -4,7 +4,7 @@ import Ember from 'ember';
  * @param {AuthContinuation}
  */
 function authContinue(authContinuation) {
-  var method;
+  let method;
   authContinuation.methods.forEach((m) => {
     // check for supported methods
     if (!method && (m === 'password' || m === 'external')) {
@@ -16,13 +16,13 @@ function authContinue(authContinuation) {
     throw new Error(this.i18n.t('shell.auth.error.unsupportedMethod'));
   }
 
-  var controller = this.get('controller');
+  let controller = this.get('controller');
   controller.set('authcontinue', true);
   controller.set('isPasswordAuth', method === 'password');
   controller.set('method', method);
   controller.set('prompt', authContinuation.prompt || '');
 
-  return new Ember.RSVP.Promise(function (resolve, reject) {
+  return new Ember.RSVP.Promise(function(resolve) {
     this.continueResolve = resolve;
     // this.continueReject = reject;
   }.bind(this));
@@ -37,8 +37,8 @@ export default Ember.Route.extend({
   session: Ember.inject.service(),
   pubsub: Ember.inject.service(),
   actions: {
-    submit () {
-      var self = this,
+    submit() {
+      let self = this,
           pubsub = this.get('pubsub'),
           controller = this.get('controller'),
           username = controller.get('username'),
@@ -46,22 +46,21 @@ export default Ember.Route.extend({
 
       if (authcontinue && this.continueResolve) {
         this.continueResolve({ method: controller.get('method'), password: controller.get('password') });
-      }
-      else {
+      } else {
         this.get('session').authenticate('authenticator:jmapauth', username, authContinue.bind(self)).then(
-          function () {
+          function() {
             self.transitionTo('shell.index');
             pubsub.trigger('shell.authenticated');
           },
-          function (message) {
+          function(message) {
             controller.send('cancel');
             pubsub.trigger('shell.notify', message);
           }
         );
       }
     },
-    cancel () {
-      var controller = this.get('controller');
+    cancel() {
+      let controller = this.get('controller');
       controller.set('authcontinue', false);
       controller.set('password', '');
       controller.set('prompt', '');

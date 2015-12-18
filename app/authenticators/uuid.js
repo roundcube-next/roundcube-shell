@@ -21,11 +21,11 @@ function getEndpoint(endpoint, uuid) {
  * @param {JmapService} jmap
  * @param {String} accountId
  */
-function tryAuth (jmap, accountId) {
-  return new Ember.RSVP.Promise(function (resolve, reject) {
+function tryAuth(jmap, accountId) {
+  return new Ember.RSVP.Promise(function(resolve, reject) {
     jmap.setup(getEndpoint('api', accountId));
     jmap.client.getAccounts()
-    .then(function (accounts) {
+    .then(function(accounts) {
       resolve(accounts[0]);
     }, reject);
   });
@@ -34,10 +34,10 @@ function tryAuth (jmap, accountId) {
 export default Base.extend({
   jmap: Ember.inject.service('jmap'),
 
-  restore (cachedAccount) {
+  restore(cachedAccount) {
     return tryAuth(this.get('jmap'), cachedAccount.id);
   },
-  authenticate (uuid) {
+  authenticate(uuid) {
     return tryAuth(this.get('jmap'), uuid);
   }
   // TODO: Add an invalidate() method when proper server auth is ready

@@ -3,14 +3,15 @@ export function initialize(application) {
   let i18n = application.lookup('service:i18n');
 
   let available = application.knownForType('locale');
-  let sourceLocales = ['en'];
   let accumulated = {};
 
   function buildTranslations(code) {
     _.each(available, (present, locale) => {
       if (_.contains(locale, '/' + code + '/')) {
+        // jscs:disable requireArrayDestructuring
         let obj = {},
             app = locale.split('/')[0].split(':')[1];
+        // jscs:enable requireArrayDestructuring
 
         obj[app] = application.lookupFactory(locale);
         _.merge(accumulated, obj);
