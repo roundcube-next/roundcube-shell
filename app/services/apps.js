@@ -6,11 +6,10 @@ import Ember from 'ember';
  */
 export default Ember.Service.extend({
   apps: [],
-  register(name, route, component) {
+  register(name, route) {
     this.apps.push({
       name,
-      route,
-      component
+      route
     });
   },
   getRoutedApps() {
