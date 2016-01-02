@@ -3,6 +3,7 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var mergeTrees = require('broccoli-merge-trees');
+var pickFiles = require('broccoli-static-compiler');
 var LivingStyleGuide = require('broccoli-livingstyleguide');
 var lsg;
 
@@ -38,7 +39,13 @@ module.exports = function(defaults) {
   app.import('bower_components/jmap-client/dist/jmap-client.js');
   app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
 
-  var trees = [app.toTree()];
+  // add glyphicons fonts
+  var bootstrapFonts = pickFiles('bower_components/bootstrap-sass/assets/fonts/bootstrap', {
+    srcDir: '/',
+    destDir: '/assets/fonts'
+  });
+
+  var trees = [app.toTree(bootstrapFonts)];
   if (lsg) {
     trees.push(lsg);
   }

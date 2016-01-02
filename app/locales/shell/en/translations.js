@@ -6,7 +6,8 @@ export default {
     logout: 'Logout',
     heading: 'Sign in to Roundcube',
     error: {
-      unsupportedMethod: 'The server requires an authentication method not supported by this client'
+      unsupportedMethod: 'The server requires an authentication method not supported by this client',
+      emptyUsername: 'Please enter your username'
     }
   },
   action: {

@@ -3,7 +3,7 @@
   <form class="login-form">
     <div class="form-group">
     {{input name='username' value=username class='form-control'
-      placeholder=(t 'shell.auth.username') disabled=authcontinue autofocus='autofocus'}}
+      placeholder=(t 'shell.auth.username') disabled=authcontinue autofocus='autofocus' required='required'}}
     </div>
     {{#if authcontinue}}
     <div class="form-group">
@@ -15,7 +15,7 @@
       </div>
     {{/if}}
     <div class="form-group">
-      <button {{action 'submit'}} type='submit' class='btn btn-primary btn-block'>
+      <button {{action 'submit'}} type='submit' class='btn btn-primary btn-block' disabled={{isLoading}}>
         {{if authcontinue (t 'shell.auth.signin') (t 'shell.action.next')}}
       </button>
     {{#if authcontinue}}

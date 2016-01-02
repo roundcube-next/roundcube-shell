@@ -12,11 +12,13 @@ function authContinue(authContinuation) {
     }
   });
 
+  var controller = this.get('controller');
+  controller.set('isLoading', false);
+
   if (!method) {
     throw new Error(this.i18n.t('shell.auth.error.unsupportedMethod'));
   }
 
-  var controller = this.get('controller');
   controller.set('authcontinue', true);
   controller.set('isPasswordAuth', method === 'password');
   controller.set('method', method);
@@ -44,10 +46,16 @@ export default Ember.Route.extend({
           username = controller.get('username'),
           authcontinue = controller.get('authcontinue');
 
-      if (authcontinue && this.continueResolve) {
+      if (!username || username.replace(/(^\s+)|(\s+$)/g, '') === '') {
+        controller.set('isLoading', true);
+        pubsub.trigger('shell.notify', this.i18n.t('shell.auth.error.emptyUsername'));
+      }
+      else if (authcontinue && this.continueResolve) {
+        controller.set('isLoading', true);
         this.continueResolve({ method: controller.get('method'), password: controller.get('password') });
       }
       else {
+        controller.set('isLoading', true);
         this.get('session').authenticate('authenticator:jmapauth', username, authContinue.bind(self)).then(
           function () {
             self.transitionTo('shell.index');
@@ -62,6 +70,7 @@ export default Ember.Route.extend({
     },
     cancel () {
       var controller = this.get('controller');
+      controller.set('isLoading', false);
       controller.set('authcontinue', false);
       controller.set('password', '');
       controller.set('prompt', '');
