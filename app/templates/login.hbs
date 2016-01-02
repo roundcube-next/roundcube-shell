@@ -19,7 +19,7 @@
         {{if authcontinue (t 'shell.auth.signin') (t 'shell.action.next')}}
       </button>
     {{#if authcontinue}}
-      <button {{action 'cancel'}} type='button' class='btn btn-link btn-block'>
+      <button {{action 'cancel'}} type='button' class='btn btn-link btn-block' disabled={{isLoading}}>
         {{t 'shell.action.cancel'}}
       </button>
     {{/if}}
