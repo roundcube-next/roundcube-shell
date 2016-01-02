@@ -36,8 +36,16 @@ export default Ember.Service.extend({
    * This sets endpoint urls and an access token for further JMAP requests
    * @method setupWithAuthAccess
    * @param {AuthAccess} authAccess
+   * @param {String} jmapHost
    */
-  setupWithAuthAccess(authAccess) {
+  setupWithAuthAccess(authAccess, jmapHost) {
+    // build fully qualified API URLs
+    var protocol = jmapHost.substr(0, 8);
+    var jmapHostBase = protocol + jmapHost.substr(8).replace(/\/.+$/, '');
+    if (authAccess.api[0] === '/') {
+      authAccess.api = jmapHostBase + authAccess.api;
+    }
+
     this.client = this.client
       .withAuthenticationToken(authAccess.accessToken)
       .withAPIUrl(authAccess.api);

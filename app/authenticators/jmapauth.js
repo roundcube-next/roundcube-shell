@@ -12,7 +12,7 @@ function tryAuth (jmap, username, continuationCallback) {
   return new Ember.RSVP.Promise(function (resolve, reject) {
     jmap.setupWithAuthenticationUrl(RoundcubeShell.jmapHost + '/.well-known/jmap');
     jmap.client.authenticate(username, 'RoundcubeShell', continuationCallback).then(function(authAccess) {
-      jmap.setupWithAuthAccess(authAccess);
+      jmap.setupWithAuthAccess(authAccess, RoundcubeShell.jmapHost);
       jmap.client.getAccounts()
         .then(function (accounts) {
           let identity = Object.assign(accounts[0]);
@@ -29,7 +29,7 @@ export default Base.extend({
   restore (cachedAccount) {
     var jmap = this.get('jmap');
     return new Ember.RSVP.Promise(function (resolve, reject) {
-      jmap.setupWithAuthAccess(cachedAccount.authAccess);
+      jmap.setupWithAuthAccess(cachedAccount.authAccess, RoundcubeShell.jmapHost);
       resolve(cachedAccount);
     });
   },
