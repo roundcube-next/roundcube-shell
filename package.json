@@ -17,7 +17,7 @@
     "node": ">= 0.10.0"
   },
   "author": "Aditya Bhatt",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "broccoli-livingstyleguide": "^0.2.0",
