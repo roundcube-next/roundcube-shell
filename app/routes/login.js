@@ -22,6 +22,7 @@ function authContinue(authContinuation) {
   controller.set('authcontinue', true);
   controller.set('isPasswordAuth', method === 'password');
   controller.set('method', method);
+  controller.set('password', '');
   controller.set('prompt', authContinuation.prompt || '');
 
   return new Ember.RSVP.Promise(function (resolve, reject) {
