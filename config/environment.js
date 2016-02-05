@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var jmapHost = process.env.JMAP_HOST;
-  var jmapHostName = jmapHost.replace(/([^:\/])\/.*$/, '$1');
+  var jmapHostName = jmapHost ? jmapHost.replace(/([^:\/])\/.*$/, '$1') : '*';
 
   var ENV = {
     modulePrefix: 'roundcube-shell',
