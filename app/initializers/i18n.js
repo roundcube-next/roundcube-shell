@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export function initialize(application) {
   let detectedLocaleCode = navigator.language || navigator.userLanguage || 'en-US';
   let i18n = application.lookup('service:i18n');
