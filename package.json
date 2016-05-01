@@ -51,6 +51,9 @@
     "ember-responsive": "^1.2.6",
     "ember-simple-auth": "^1.1.0-beta.4",
     "ember-truth-helpers": "^1.2.0",
-    "loader.js": "^4.0.1"
-  }
+    "loader.js": "^4.0.1",
+    "roundcube-notifications": "https://github.com/roundcube-next/roundcube-notifications.git",
+    "roundcube-mail": "https://github.com/roundcube-next/roundcube-mail.git"
+  },
+  "dependencies": {}
 }
