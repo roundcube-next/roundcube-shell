@@ -1,6 +1,8 @@
 import _ from 'lodash';
 
 export function initialize(application) {
+  // FIXME: this initializer is deprecated in Ember 2.x and suport for application.lookupFactory()
+  // as about to go away. PR for proper support in ember-i18n is pending: https://github.com/jamesarosen/ember-i18n/issues/255
   let detectedLocaleCode = navigator.language || navigator.userLanguage || 'en-US';
   let i18n = application.lookup('service:i18n');
 
