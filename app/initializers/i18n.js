@@ -5,7 +5,6 @@ export function initialize(application) {
   let i18n = application.lookup('service:i18n');
 
   let available = application.knownForType('locale');
-  let sourceLocales = ['en'];
   let accumulated = {};
 
   function buildTranslations(code) {

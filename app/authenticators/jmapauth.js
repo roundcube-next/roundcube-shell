@@ -28,7 +28,7 @@ export default Base.extend({
 
   restore (cachedAccount) {
     var jmap = this.get('jmap');
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Ember.RSVP.Promise(function (resolve) {
       jmap.setupWithAuthAccess(cachedAccount.authAccess, RoundcubeShell.jmapHost);
       resolve(cachedAccount);
     });

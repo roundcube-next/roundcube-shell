@@ -25,9 +25,8 @@ function authContinue(authContinuation) {
   controller.set('password', '');
   controller.set('prompt', authContinuation.prompt || '');
 
-  return new Ember.RSVP.Promise(function (resolve, reject) {
+  return new Ember.RSVP.Promise(function (resolve) {
     this.continueResolve = resolve;
-    // this.continueReject = reject;
   }.bind(this));
 }
 
