@@ -1,6 +1,6 @@
 {{#each navbarApps as |app|}}
   {{#link-to app.route tagName='li'}}
-    {{#link-to app.route bind-attr disabled='currentWhen:true' tagName='a'}}
+    {{#link-to app.route tagName='a'}}
       {{app.name}}
     {{/link-to}}
   {{/link-to}}
