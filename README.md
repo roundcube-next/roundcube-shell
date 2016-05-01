@@ -24,6 +24,17 @@ Bring in all dependencies and set up the project:
 * `npm install`
 * `bower install`
 
+### Installing apps
+
+The final Roundcube webmail will be a combination of this shell and a collection of apps. These apps are maintained in individual repository and need to be pulled in for development and building. As long as the apps are not published as finally build Ember addons, the best way to include them is with `npm link`.
+
+This is how to pull everything together for running/building/developing Roundcube Next:
+
+* Clone [roundcube-notifications](https://github.com/roundcube-next/roundcube-notifications) and follow the "Usage" guide in the README.
+* Clone [roundcube-mail](https://github.com/roundcube-next/roundcube-mail.git) and follow the "Usage" guide in the README.
+* Change to this directory and link the two repos into node_modules:  
+    `npm link roundcube-notifications roundcube-mail`
+
 ## Running / Development
 
 The JMAP proxy happens to only support a very basic sort of authentication at this moment. You can link your IMAP account with the proxy server, and it should provide a secret UUID that identifies you.
