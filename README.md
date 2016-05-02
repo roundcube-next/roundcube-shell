@@ -23,6 +23,7 @@ Bring in all dependencies and set up the project:
 * `bundle`
 * `npm install`
 * `bower install`
+* `ember g roundcube-mail`
 
 ## Running / Development
 
