@@ -36,11 +36,11 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  app.import('bower_components/jmap-client/dist/jmap-client.js');
-  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
+  app.import(app.bowerDirectory + '/jmap-client/dist/jmap-client.js');
+  app.import(app.bowerDirectory + '/bootstrap-sass/assets/javascripts/bootstrap.js');
 
   // add glyphicons fonts
-  var bootstrapFonts = pickFiles('bower_components/bootstrap-sass/assets/fonts/bootstrap', {
+  var bootstrapFonts = pickFiles(app.bowerDirectory + '/bootstrap-sass/assets/fonts/bootstrap', {
     srcDir: '/',
     destDir: '/assets/fonts'
   });
