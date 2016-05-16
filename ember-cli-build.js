@@ -21,6 +21,9 @@ module.exports = function(defaults) {
       options: {
         'precision': 8
       }
+    },
+    emberCliFontAwesome: {
+      useScss: true
     }
   });
 
@@ -42,7 +45,7 @@ module.exports = function(defaults) {
   // add glyphicons fonts
   var bootstrapFonts = pickFiles(app.bowerDirectory + '/bootstrap-sass/assets/fonts/bootstrap', {
     srcDir: '/',
-    destDir: '/assets/fonts'
+    destDir: '/fonts'
   });
 
   var trees = [app.toTree(bootstrapFonts)];

@@ -7,19 +7,12 @@
   }
 
   .btn-primary[disabled]:after {
-    @extend .glyphicon;
+    @include fa-icon();
+    @extend .fa-spin;
     position: absolute;
-    content: "\e031";
+    content: $fa-var-circle-o-notch;
     right: 10px;
     top: 8px;
-
-    -webkit-animation: spin 2s linear infinite;
-    -moz-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
   }
 }
-
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
