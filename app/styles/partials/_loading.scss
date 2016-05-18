@@ -1,0 +1,32 @@
+.loading-pane {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.loading-message {
+  text-align: center;
+  width: auto;
+  margin: auto auto;
+  margin-top: 25%;
+
+  .loading-sign {
+    @include fa-icon();
+    @extend .fa-spin;
+
+    &.medium {
+      @extend .fa-2x;
+    }
+
+    &.large {
+      @extend .fa-4x;
+    }
+  }
+
+  .loading-sign:before {
+    content: $fa-var-circle-o-notch;
+  }
+}
+
