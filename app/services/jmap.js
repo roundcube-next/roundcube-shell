@@ -42,12 +42,12 @@ export default Ember.Service.extend({
     // build fully qualified API URLs
     var protocol = jmapHost.substr(0, 8);
     var jmapHostBase = protocol + jmapHost.substr(8).replace(/\/.+$/, '');
-    if (authAccess.api[0] === '/') {
-      authAccess.api = jmapHostBase + authAccess.api;
+    if (authAccess.apiUrl[0] === '/') {
+      authAccess.api = jmapHostBase + authAccess.apiUrl;
     }
 
     this.client = this.client
       .withAuthenticationToken(authAccess.accessToken)
-      .withAPIUrl(authAccess.api);
+      .withAPIUrl(authAccess.apiUrl);
   }
 });
