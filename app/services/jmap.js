@@ -42,12 +42,18 @@ export default Ember.Service.extend({
     // build fully qualified API URLs
     var protocol = jmapHost.substr(0, 8);
     var jmapHostBase = protocol + jmapHost.substr(8).replace(/\/.+$/, '');
-    if (authAccess.apiUrl[0] === '/') {
-      authAccess.api = jmapHostBase + authAccess.apiUrl;
+
+    ['apiUrl', 'uploadUrl', 'downloadUrl', 'eventSourceUrl'].forEach((prop) => {
+      if (authAccess[prop][0] === '/') {
+        authAccess[prop] = jmapHostBase + authAccess[prop];
+      }
+    });
+
+    // cast into an acutal jmap.AuthAccess instance of coming from cache
+    if (!(authAccess instanceof jmap.AuthAccess)) {
+      authAccess = new jmap.AuthAccess(authAccess);
     }
 
-    this.client = this.client
-      .withAuthenticationToken(authAccess.accessToken)
-      .withAPIUrl(authAccess.apiUrl);
+    this.client = this.client.withAuthAccess(authAccess);
   }
 });

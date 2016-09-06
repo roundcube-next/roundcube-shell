@@ -7,12 +7,11 @@
     </div>
     {{#if authcontinue}}
     <div class="form-group">
-      {{#if isPasswordAuth}}
-        {{focus-input type='password' name='password' value=password class='form-control'
-          placeholder=(t 'shell.auth.password')}}
+      {{#if requestValue}}
+        {{focus-input type='password' name='password' value=value class='form-control' placeholder=placeholder}}
       {{/if}}
       <span class="prompt help-block">{{{prompt}}}</span>
-      </div>
+    </div>
     {{/if}}
     <div class="form-group">
       <button {{action 'submit'}} type='submit' class='btn btn-primary btn-block' disabled={{isLoading}}>
