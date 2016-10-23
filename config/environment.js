@@ -18,10 +18,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      jmapHost: jmapHost
-    },
-    i18n: {
-      defaultLocale: 'en-us'
+      jmapHost: jmapHost,
+      locales: ['en','de']
     },
     contentSecurityPolicy: {
       'connect-src': "'self' " + jmapHostName,

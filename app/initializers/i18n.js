@@ -1,43 +1,8 @@
-import _ from 'lodash';
-
 export function initialize(application) {
-  // FIXME: this initializer is deprecated in Ember 2.x and suport for application.lookupFactory()
-  // as about to go away. PR for proper support in ember-i18n is pending: https://github.com/jamesarosen/ember-i18n/issues/255
-  let detectedLocaleCode = navigator.language || navigator.userLanguage || 'en-US';
-  let i18n = application.lookup('service:i18n');
-
-  let available = application.knownForType('locale');
-  let accumulated = {};
-
-  function buildTranslations(code) {
-    _.each(available, (present, locale) => {
-      if (_.contains(locale, '/' + code + '/')) {
-        let obj = {},
-            app = locale.split('/')[0].split(':')[1];
-
-        obj[app] = application.lookupFactory(locale);
-        _.merge(accumulated, obj);
-      }
-    });
-  }
-
-  let [lang, region] = detectedLocaleCode.split('-');
-  // Accumulate strings from all roundcube apps, localized in english (last fallback)
-  buildTranslations('en');
-  // Override those with strings from the language without the region code (fallback)
-  if (region && lang !== 'en') {
-    buildTranslations(lang);
-  }
-  // Override language-specific strings with region-specific translations
-  if (detectedLocaleCode !== 'en') {
-    buildTranslations(detectedLocaleCode);
-  }
-
-  // Dynamically add these translations instead of letting ember-i18n pick them up
-  // FIXME: Using 'en' here is a hack to stop ember-i18n from performing it's magic lookup
-  i18n.addTranslations('en', accumulated);
-
-  application.injection('route', 'i18n', 'service:i18n');
+  // FIXME: inject service:intl as 'i18n'
+  application.inject('route', 'i18n', 'service:intl');
+  application.inject('controller', 'i18n', 'service:intl');
+  application.inject('view', 'i18n', 'service:intl');
 }
 
 export default {
